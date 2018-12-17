@@ -9,8 +9,7 @@ import java.util.Set;
 
 public class cards {
 	public static void main(String[] args){
-		cards();
-		System.out.println(deckShuffle(card));
+		System.out.println(cards());
 	}
 	public static ArrayList<String> cards(){
 		String[] suits;
@@ -19,6 +18,7 @@ public class cards {
 		suits = new String[]{"Club", "Heart", "Diamond", "Spade"};
 		ranks = new String[]{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 		ArrayList<String> card = new ArrayList<String>();
+		ArrayList<String> twoCards = new ArrayList<String>();
 		for (int a=0; a<=ranks.length - 1; a++){
 			card.add(MessageFormat.format("{0} of {1}", ranks[a], suits[0]));
 		}
@@ -31,13 +31,10 @@ public class cards {
 		for (int a=0; a<=ranks.length - 1; a++){
 			card.add(MessageFormat.format("{0} of {1}", ranks[a], suits[3]));
 		}
-		return card;
-	}
-	public void deckShuffle(){
-		this.cards();
 		Collections.shuffle(card);
-        for (int i=0; i<3; i++) {
-            System.out.println(card.get(i));
+        for (int i=0; i<2; i++) {
+            twoCards.add(card.get(i));
         }
+        return twoCards;
 	}
 }
