@@ -1,17 +1,21 @@
-package card_counter;
+
+package cards;
+
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.ArrayList; 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.Scanner;
 
 public class cards {
 	public static void main(String[] args){
-		System.out.println(cards());
+		cards();
 	}
-	public static ArrayList<String> cards(){
+	public static void cards(){
 		String[] suits;
 		String[] ranks;
 
@@ -35,6 +39,20 @@ public class cards {
         for (int i=0; i<2; i++) {
             twoCards.add(card.get(i));
         }
-        return twoCards;
+        Iterator itr = card.iterator();
+        Scanner reader = new Scanner(System.in);
+        String in = reader.nextLine();
+        System.out.println("Do you want a card? (y/n)");
+        while (in.equals("y")) {
+        	System.out.println("Do you want a card? (y/n)");
+        	in = reader.nextLine();
+        	if (itr.hasNext()) {
+        		String i = (String)itr.next(); 
+        		String j = (String)itr.next();
+        		System.out.println(i+ "  -  " + j);
+        	} else {
+        		System.out.print("All done");
+        	}
+        }
 	}
 }
