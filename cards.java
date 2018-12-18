@@ -1,6 +1,4 @@
-
-package cards;
-
+package card_counter;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.ArrayList; 
@@ -15,7 +13,7 @@ public class cards {
 	public static void main(String[] args){
 		cards();
 	}
-	public static void cards(){
+	public static ArrayList<String> cards(){
 		String[] suits;
 		String[] ranks;
 
@@ -35,24 +33,22 @@ public class cards {
 		for (int a=0; a<=ranks.length - 1; a++){
 			card.add(MessageFormat.format("{0} of {1}", ranks[a], suits[3]));
 		}
-		Collections.shuffle(card);
-        for (int i=0; i<2; i++) {
-            twoCards.add(card.get(i));
-        }
-        Iterator itr = card.iterator();
-        Scanner reader = new Scanner(System.in);
-        String in = reader.nextLine();
-        System.out.println("Do you want a card? (y/n)");
-        while (in.equals("y")) {
-        	System.out.println("Do you want a card? (y/n)");
-        	in = reader.nextLine();
-        	if (itr.hasNext()) {
-        		String i = (String)itr.next(); 
-        		String j = (String)itr.next();
-        		System.out.println(i+ "  -  " + j);
-        	} else {
-        		System.out.print("All done");
-        	}
-        }
+		return card;
+//		Collections.shuffle(card);
+//        Iterator itr = card.iterator();
+//        Scanner reader = new Scanner(System.in);
+//        String in = reader.nextLine();
+//        System.out.println("Do you want a card? (y/n)");
+//        while (in.equals("y")) {
+//        	System.out.println("Do you want a card? (y/n)");
+//        	in = reader.nextLine();
+//        	if (itr.hasNext()) {
+//        		String i = (String)itr.next(); 
+//        		String j = (String)itr.next();
+//        		System.out.println(i+ "  -  " + j);
+//        	} else {
+//        		System.out.print("All done");
+//        	}
+//        }
 	}
 }
