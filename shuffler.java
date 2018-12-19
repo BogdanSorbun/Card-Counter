@@ -1,4 +1,4 @@
-package card_counter;
+package cards;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
@@ -11,14 +11,7 @@ import java.util.Set;
 import java.util.Scanner;
 
 public class shuffler {
-	
-	public static void main(String[] args){
-		String[] cards = new String[312];
-		cards = deck(6);
-		System.out.println(cards[0]);
-	}
-
-	public static String[] deck(int number){
+	public static String[] Deck(int number){
 		String[] suits;
 		String[] ranks;
 
