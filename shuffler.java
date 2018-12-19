@@ -11,71 +11,21 @@ import java.util.Set;
 import java.util.Scanner;
 
 public class shuffler {
-	static ArrayList<String> cards;
 	
 	public static void main(String[] args){
-		Scanner reader;
-		String inp;
-		int number;
-		
-		reader = new Scanner(System.in);
-		inp = reader.nextLine();
-		System.out.println("How Many decks will you use? (1-6)");
-		number = Integer.parseInt(inp);
-		shuffled_decks(number);
+		String[] cards = new String[312];
+		cards = deck(6);
+		System.out.println(cards[0]);
 	}
-	public static ArrayList<String> shuffled_decks(int number){
-//		multiplies the deck of cards
-		ArrayList<String> twoDecks = new ArrayList<String>();
-		ArrayList<String> threeDecks = new ArrayList<String>();
-		ArrayList<String> fourDecks = new ArrayList<String>();
-		ArrayList<String> fiveDecks = new ArrayList<String>();
-		ArrayList<String> sixDecks = new ArrayList<String>();
-		deck();
-		
-		if (number == 1){
-			Collections.shuffle(cards);
-		} else if (number == 2){
-			twoDecks = cards.addAll(cards);
-			Collections.shuffle(twoDecks);
-			cards = twoDecks;
-		} else if (number == 3){
-			twoDecks = cards.addAll(cards);
-			threeDecks = twoDecks.addAll(cards);
-			Collections.shuffle(threeDecks);
-			cards = threeDecks;
-		} else if (number == 4){
-			twoDecks = cards.addAll(cards);
-			threeDecks = twoDecks.addAll(cards);
-			fourDecks = threeDecks.addAll(cards);
-			Collections.shuffle(fourDecks);
-			cards = fourDecks;
-		} else if (number == 5){
-			twoDecks = cards.addAll(cards);
-			threeDecks = twoDecks.addAll(cards);
-			fourDecks = threeDecks.addAll(cards);
-			fiveDecks = fourDecks.addAll(cards);
-			Collections.shuffle(fiveDecks);
-			cards = fiveDecks;
-		} else if (number == 6){
-			twoDecks = cards.addAll(cards);
-			threeDecks = twoDecks.addAll(cards);
-			fourDecks = threeDecks.addAll(cards);
-			fiveDecks = fourDecks.addAll(cards);
-			sixDecks = fiveDecks.addAll(cards);
-			Collections.shuffle(sixDecks);
-			cards = sixDecks;
-		}
-		return cards
-	}
-	public static ArrayList<String> deck(){
+
+	public static String[] deck(int number){
 		String[] suits;
 		String[] ranks;
 
 //		Made two separate lists, and then appended them to an empty list with every combination possible
 		suits = new String[]{"Club", "Heart", "Diamond", "Spade"};
 		ranks = new String[]{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-		cards = new ArrayList<String>();
+		ArrayList<String> cards = new ArrayList<String>();
 		
 		for (int a=0; a<=ranks.length - 1; a++){
 			cards.add(MessageFormat.format("{0} of {1}", ranks[a], suits[0]));
@@ -89,6 +39,56 @@ public class shuffler {
 		for (int a=0; a<=ranks.length - 1; a++){
 			cards.add(MessageFormat.format("{0} of {1}", ranks[a], suits[3]));
 		}
-		return cards;
+//		make the arraylist into array
+		String[] final_list = new String[cards.size()];
+		final_list = cards.toArray(final_list);
+		
+//		Shuffles number of decks you specify
+		if (number == 1){
+			Collections.shuffle(cards);
+			final_list = new String[cards.size()];
+			final_list = cards.toArray(final_list);
+		} else if (number == 2){
+			ArrayList<String> twoDecks = new ArrayList<String>(Arrays.asList(final_list));
+			twoDecks.addAll(Arrays.asList(final_list));
+			Collections.shuffle(twoDecks);
+			final_list = new String[twoDecks.size()];
+			final_list = twoDecks.toArray(final_list);
+		} 
+		else if (number == 3){
+			ArrayList<String> threeDecks = new ArrayList<String>(Arrays.asList(final_list));
+			threeDecks.addAll(Arrays.asList(final_list));
+			threeDecks.addAll(Arrays.asList(final_list));
+			Collections.shuffle(threeDecks);
+			final_list = new String[threeDecks.size()];
+			final_list = threeDecks.toArray(final_list);
+		} else if (number == 4){
+			ArrayList<String> fourDecks = new ArrayList<String>(Arrays.asList(final_list));
+			fourDecks.addAll(Arrays.asList(final_list));
+			fourDecks.addAll(Arrays.asList(final_list));
+			fourDecks.addAll(Arrays.asList(final_list));
+			Collections.shuffle(fourDecks);
+			final_list = new String[fourDecks.size()];
+		} else if (number == 5){
+			ArrayList<String> fiveDecks = new ArrayList<String>(Arrays.asList(final_list));
+			fiveDecks.addAll(Arrays.asList(final_list));
+			fiveDecks.addAll(Arrays.asList(final_list));
+			fiveDecks.addAll(Arrays.asList(final_list));
+			fiveDecks.addAll(Arrays.asList(final_list));
+			Collections.shuffle(fiveDecks);
+			final_list = new String[fiveDecks.size()];
+			final_list = fiveDecks.toArray(final_list);
+		} else if (number == 6){
+			ArrayList<String> sixDecks = new ArrayList<String>(Arrays.asList(final_list));
+			sixDecks.addAll(Arrays.asList(final_list));
+			sixDecks.addAll(Arrays.asList(final_list));
+			sixDecks.addAll(Arrays.asList(final_list));
+			sixDecks.addAll(Arrays.asList(final_list));
+			sixDecks.addAll(Arrays.asList(final_list));
+			Collections.shuffle(sixDecks);
+			final_list = new String[sixDecks.size()];
+			final_list = sixDecks.toArray(final_list);
+		}
+		return final_list;
 	}
 }
