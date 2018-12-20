@@ -1,4 +1,6 @@
-package card_counter;
+
+package cards;
+
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.ArrayList; 
@@ -16,38 +18,33 @@ import java.util.Scanner;
 public class cards {
 	static int CardValue = 0;
 
-	public static void main(String[] args){
-		System.out.println(card(1));
-	}
-	public static int card(int number){
+	public static int cardValue(String card) {
 		int CardValue = 0;
-		int HighAce = 11;
-		String[] CardsValue = shuffler.shuffledDeck(number);
-		if (CardsValue[0].contains("2")){
+		if (card.contains("2")){
 			CardValue = 2;
 		}
-		if (CardsValue[0].contains("3")){
+		if (card.contains("3")){
 			CardValue = 3;
 		}
-		if (CardsValue[0].contains("4")){
+		if (card.contains("4")){
 			CardValue = 4;
 		}
-		if (CardsValue[0].contains("5")){
+		if (card.contains("5")){
 			CardValue = 5;
 		}
-		if (CardsValue[0].contains("6")){
+		if (card.contains("6")){
 			CardValue = 6;
 		}
-		if (CardsValue[0].contains("7")){
+		if (card.contains("7")){
 			CardValue = 7;
 		}
-		if (CardsValue[0].contains("8")){
+		if (card.contains("8")){
 			CardValue = 8;
 		}
-		if (CardsValue[0].contains("9")){
+		if (card.contains("9")){
 			CardValue = 9;
 		}
-		if (CardsValue[0].contains("10") || CardsValue[0].contains("J") || CardsValue[0].contains("Q") || CardsValue[0].contains("K")){
+		if (card.contains("10") || card.contains("Q") || card.contains("K") || card.contains("J")){
 			CardValue = 10;
 		}
 		return CardValue;

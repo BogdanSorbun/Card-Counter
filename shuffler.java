@@ -1,4 +1,4 @@
-package card_counter;
+package cards;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
